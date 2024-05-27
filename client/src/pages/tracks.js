@@ -1,6 +1,7 @@
-import React from 'react';
-import { Layout } from '../components';
-import { gql } from "@apollo/client"
+import React, { useEffect } from "react"
+import { Layout } from "../components"
+import { useQuery, gql } from "@apollo/client"
+import TrackCard from "../containers/track-card"
 
 /**
  * Tracks Page is the Catstronauts home page.
@@ -10,7 +11,7 @@ import { gql } from "@apollo/client"
 const TRACKS = gql`
   # Query goes here
   query GetAllTracks {
-    tracks {
+    allTracks {
       id
       title
       author {
@@ -26,7 +27,18 @@ const TRACKS = gql`
 `
 
 const Tracks = () => {
-  return <Layout grid> </Layout>;
-};
+  const { loading, error, data } = useQuery(TRACKS)
+  
+  if (loading) return "Loading..."
+  if (error) return `Error! ${error.message}`
 
-export default Tracks;
+  return (
+    <Layout grid>
+      {data?.allTracks?.map((track, id) => (
+        <TrackCard key={`track_${id}`} track={track} />
+      ))}
+    </Layout>
+  )
+}
+
+export default Tracks
