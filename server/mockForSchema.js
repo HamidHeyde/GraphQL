@@ -1,6 +1,6 @@
-const mockForSchema = {
+const mocks = {
   Query: () => ({
-    tracks: () => [...new Array(6)],
+    tracks: () => [...new Array(3)],
   }),
   Track: () => ({
     id: () => "track_01",
@@ -19,4 +19,4 @@ const mockForSchema = {
   }),
 }
 
-module.exports = mockForSchema
+module.exports = mocks
