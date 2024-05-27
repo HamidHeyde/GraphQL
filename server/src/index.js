@@ -3,13 +3,13 @@ const { startStandaloneServer } = require("@apollo/server/standalone")
 const { addMocksToSchema } = require("@graphql-tools/mock")
 const { makeExecutableSchema } = require("@graphql-tools/schema")
 const typeDefs = require("./schema")
-const mockForSchema = require("../mockForSchema")
+const mocks = require("../mockForSchema")
 
 async function main() {
   const server = new ApolloServer({
     schema: addMocksToSchema({
       schema: makeExecutableSchema({ typeDefs }),
-      mockForSchema,
+      mocks,
     }),
   })
   const { url } = await startStandaloneServer(server, {
