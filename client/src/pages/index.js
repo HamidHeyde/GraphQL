@@ -8,5 +8,5 @@ export default function Pages() {
     <Router primary={false} component={Fragment}>
       <Tracks path="/" />
     </Router>
-  );
+  )
 }
