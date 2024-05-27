@@ -1,6 +1,11 @@
 const gql = require("graphql-tag")
 
 const typeDefs = gql`
+  type Query {
+    "Get all tracks"
+    tracks: [Track!]!
+  }
+
   "A track is a group of Modules that teaches about a specific topic"
   type Track {
     "The track's ID"
@@ -17,6 +22,7 @@ const typeDefs = gql`
     modulesCount: Int
   }
 
+  "An Author is a person who has created a track"
   type Author {
     "Author's ID"
     id: ID!
