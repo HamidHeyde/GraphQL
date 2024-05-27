@@ -3,7 +3,7 @@ const gql = require("graphql-tag")
 const typeDefs = gql`
   type Query {
     "Get all tracks"
-    tracks: [Track!]!
+    allTracks: [Track!]!
     "Get a track by ID"
     trackById(id: ID!): Track
     "Get a track by title"
