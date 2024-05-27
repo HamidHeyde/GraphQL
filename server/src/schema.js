@@ -4,6 +4,10 @@ const typeDefs = gql`
   type Query {
     "Get all tracks"
     tracks: [Track!]!
+    "Get a track by ID"
+    trackById(id: ID!): Track
+    "Get a track by title"
+    trackByTitle(title: String!): Track
   }
 
   "A track is a group of Modules that teaches about a specific topic"
